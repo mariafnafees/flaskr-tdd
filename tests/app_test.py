@@ -81,3 +81,8 @@ def test_delete_message(client):
     rv = client.get('/delete/1')
     data = json.loads(rv.data)
     assert data["status"] == 1
+
+def test_search_without_query(client):
+    # Test the /search/ route without a query
+    response = client.get('/search/')
+    assert response.status_code == 200
